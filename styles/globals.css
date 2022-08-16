@@ -1,3 +1,25 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  /* Created with https://www.css-gradient.com */
+  /* background: #3443A8;
+  background: -webkit-linear-gradient(top left, #3443A8, #7F8CB6);
+  background: -moz-linear-gradient(top left, #3443A8, #7F8CB6);
+  background: linear-gradient(to bottom right, #3443A8, #7F8CB6);
+  height: 100%; */
+}
+
+
+
+
+
+
 html,
 body {
   padding: 0;
@@ -19,6 +41,7 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;
