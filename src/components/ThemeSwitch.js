@@ -1,15 +1,7 @@
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import useThemeModes from "../hooks/useThemeModes"
 
-function ThemeChanger() {
-    const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, [])
-
-    if (!mounted) return null;
+function ThemeSwitch() {
+    const { theme, setTheme } = useThemeModes();
     return (
         <>
             <button tabIndex={1} onClick={() => { setTheme(theme === 'light' ? 'dark' : 'light') }}
@@ -29,4 +21,4 @@ function ThemeChanger() {
     )
 }
 
-export default ThemeChanger
+export default ThemeSwitch
