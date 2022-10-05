@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function GenreForm() {
+    const [validationToasts, setValidationToasts] = useState({ minRating: false });
     const [genre, setGenre] = useState({
         items: [
             { text: 'Action', value: 'Action' },
@@ -75,7 +76,7 @@ function GenreForm() {
                                 }
                             </div>
                             <div className='relative w-full'>
-                                <ul ref={itemsUlRef} className={'bg-slate-200 dark:bg-slate-800 shadow-md absolute w-full duration-500 ease-in-out scrollbar scrollbar-thumb-radius-none scrollbar-track-slate-300 scrollbar-thumb-slate-700 hover:scrollbar-thumb-slate-900' + (genre.open ? ' max-h-[150px] overflow-auto' : ' max-h-[0px] overflow-hidden')}>
+                                <ul ref={itemsUlRef} className={'bg-slate-200 dark:bg-slate-800 shadow shadow-slate-300 dark:shadow-slate-900 absolute w-full duration-500 ease-in-out scrollbar scrollbar-thumb-radius-none scrollbar-track-slate-300 scrollbar-thumb-slate-700 hover:scrollbar-thumb-slate-900' + (genre.open ? ' max-h-[150px] overflow-auto' : ' max-h-[0px] overflow-hidden')}>
                                     {
                                         genre.items.map((x, ind) =>
                                             <li
@@ -91,14 +92,20 @@ function GenreForm() {
                     <div className='flex w-full text-lg'>
                         <label className='flex w-4/12'>Min. rating</label>
                         <div className='flex w-8/12 space-x-2'>
-                            <input onChange={(e) => { setMinRating(e.currentTarget.value) }} value={minRating}
+                            <input onChange={(e) => { setMinRating(e.currentTarget.value); setValidationToasts({...validationToasts, minRating: parseFloat(e.currentTarget.value) > 9.5}) }} value={minRating}
                                 className='flex w-4/12 dark:border dark:focus:border-slate-500 dark:border-transparent bg-slate-300 dark:bg-slate-900 rounded dark:rounded-none shadow-inner focus:outline-none px-2' type={'text'}></input>
-                            <Link className='flex w-8/12 focus:outline-none bg-slate-700 dark:bg-slate-300 dark:text-slate-700 hover:dark:text-slate-900 focus:dark:text-slate-900 justify-center text-slate-300 hover:text-slate-200 rounded dark:rounded-none shadow duration-200' to={{
-                                pathname: 'game',
-                                search: '?genre=' + genre.selected.value + '&minRating=' + minRating
+                            <Link onClick={() => { if(validationToasts.minRating) return false; }}
+                            className='flex w-8/12 focus:outline-none bg-slate-700 dark:bg-slate-300 dark:text-slate-700 hover:dark:text-slate-900 focus:dark:text-slate-900 justify-center text-slate-300 hover:text-slate-200 rounded dark:rounded-none shadow duration-200' to={{
+                                pathname: validationToasts.minRating ? undefined : 'game',
+                                search: validationToasts.minRating ? undefined : ('?genre=' + genre.selected.value + '&minRating=' + minRating)
                             }}>Play</Link>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className={'w-full fixed duration-500' + (validationToasts.minRating ? ' bottom-10' : ' -bottom-10')}>
+                <div className='text-sm bg-slate-700 text-white mx-auto w-fit rounded-sm'>
+                    <div className='px-5 py-2'>Min. rating must be less than 9.6</div>
                 </div>
             </div>
         </>
