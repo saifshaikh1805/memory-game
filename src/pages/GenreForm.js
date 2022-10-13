@@ -53,7 +53,7 @@ function GenreForm() {
 
     return (
         <>
-            <div className='flex h-[100vh] items-center w-10/12 sm:w-7/12 md:w-5/12 lg:w-4/12 xl:w-3/12 2xl:w-2/12 pt-3 mx-auto font-ubuntu-mono dark:text-slate-300 text-gray-700'>
+            <div className='flex h-[100vh] items-center w-10/12 sm:w-7/12 md:w-5/12 lg:w-4/12 xl:w-3/12 2xl:w-3/12 pt-3 mx-auto font-ubuntu-mono dark:text-slate-300 text-gray-700'>
                 <div className='flex flex-col space-y-2 w-full mx-auto'>
                     <div className='flex w-full text-lg'>
                         <label className='flex w-4/12'>Genre</label>
