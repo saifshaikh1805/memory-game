@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function GenreForm() {
+    document.title = 'Set Genre | Memory Game';
     const [validationToasts, setValidationToasts] = useState({ minRating: false });
     const [genre, setGenre] = useState({
         items: [

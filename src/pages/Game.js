@@ -3,6 +3,7 @@ import ReactCardFlip from 'react-card-flip'
 import { useSearchParams } from 'react-router-dom';
 
 export default function Game() {
+    document.title = 'Memory Game';
     const [queryParams, setQueryParams] = useSearchParams();
     const genre = queryParams.get('genre') || 'Crime';
     const minRating = parseFloat(queryParams.get('minRating') || '8');
